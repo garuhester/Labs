@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    body,
+    html {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .editor {
+        width: 100%;
+        height: 100%;
+        background: #ddd;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .rect {
+        position: absolute;
+        display: none;
+        cursor: pointer;
+    }
+
+    .draw {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background: skyblue;
+        display: none;
+        border:1px solid #fff;
+        box-sizing: border-box;
+    }
+
+    .drawtl {
+        top: -10px;
+        left: -10px;
+    }
+
+    .drawtm {
+        top: -10px;
+        left: 50%;
+        transform: translate(-50%, 0);
+    }
+
+    .drawtr {
+        top: -10px;
+        right: -10px;
+    }
+
+    .drawml {
+        top: 50%;
+        left: -10px;
+        transform: translate(0, -50%);
+    }
+
+    .drawmr {
+        top: 50%;
+        right: -10px;
+        transform: translate(0, -50%);
+    }
+
+    .drawbl {
+        bottom: -10px;
+        left: -10px;
+    }
+
+    .drawbm {
+        bottom: -10px;
+        left: 50%;
+        transform: translate(-50%, 0);
+    }
+
+    .drawbr {
+        bottom: -10px;
+        right: -10px;
+    }
+
+    </style>
+</head>
+
+<body>
+    <div class="editor">
+        <div class="rect">
+            <div class="draw drawtl"></div>
+            <div class="draw drawtm"></div>
+            <div class="draw drawtr"></div>
+            <div class="draw drawml"></div>
+            <div class="draw drawmr"></div>
+            <div class="draw drawbl"></div>
+            <div class="draw drawbm"></div>
+            <div class="draw drawbr"></div>
+        </div>
+    </div>
+    <script>
+    window.onload = function() {
+    	var sWidth = document.body.clientWidth;
+    	var sHeight = document.body.clientHeight;
+        var editor = document.querySelector(".editor");
+        var rect = document.querySelector(".rect");
+        var draws = document.querySelectorAll(".draw");
+        var top = 50,
+        	left = 50,
+        	rWidth = 200,
+        	rHeight = 200;
+        rect.style.top = top + "px";
+        rect.style.left = left + "px";
+        rect.style.height = rHeight + "px";
+        rect.style.width = rWidth + "px";
+        rect.style.background = "skyblue";
+        rect.style.display = "block";
+        rect.onmousedown = function(e1) {
+        	e1.stopPropagation();
+            var x1 = e1.x,
+                y1 = e1.y;
+            var rtop = parseInt(rect.style.top.replace("px","")),
+            	rleft = parseInt(rect.style.left.replace("px",""));
+            for (var i = 0; i < draws.length; i++) {
+                draws[i].style.display = "block";
+            }
+            window.onmousemove = function(e2) {
+            	top = rtop;
+            	left = rleft;
+                var x2 = e2.x,
+                    y2 = e2.y;
+                var offsetX = x2 - x1,
+                    offsetY = y2 - y1;
+                top += offsetY;
+                left += offsetX;
+                if(top <= 0){
+                	top = 0;
+                }
+                if((top+rHeight) >= sHeight){
+                	top = sHeight - rHeight;
+                }
+                if(left <= 0){
+                	left = 0;
+                }
+                if((left+rWidth) >= sWidth){
+                	left = sWidth - rWidth;
+                }
+		        rect.style.top = top + "px";
+		        rect.style.left = left + "px";
+            }
+            this.onmouseup = function(){
+            	window.event.stopPropagation();
+	            window.onmousemove = function() {};
+            }
+        }
+        window.onmouseup = function() {
+            window.onmousemove = function() {};
+            for (var i = 0; i < draws.length; i++) {
+                draws[i].style.display = "none";
+            }
+        }
+    }
+    </script>
+</body>
+
+</html>
