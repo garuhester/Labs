@@ -1,116 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Hester's Labs</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <style>
-    	body,html{
-    		margin:0;
-    		padding: 0;
-    		background: #eee;
-    	}
-    	.bg {
-    	    width: 100%;
-    	    position: relative;
-    	    font-size: 0;
-    	}
+    body,
+    html {
+        margin: 0;
+        padding: 0;
+        background: #eee;
+    }
 
-    	.bg img {
-    	    width: 100%;
-    	    height: 400px;
-    	    object-fit: cover;
-    	}
+    .bg {
+        width: 100%;
+        position: relative;
+        font-size: 0;
+    }
 
-    	.bg .mask {
-    	    position: absolute;
-    	    top: 0;
-    	    left: 0;
-    	    width: 100%;
-    	    height: 100%;
-    	    background: rgba(0, 0, 0, 0.2);
-    	}
+    .bg img {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+    }
 
-    	.bg .crs {
-    	    font-size: 2.5rem;
-    	    position: absolute;
-    	    color: #fff;
-    	    top: 50%;
-    	    transform: translate(0, -50%);
-    	    left: 10%;
-    	}
+    .bg .mask {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.2);
+    }
 
-    	@media (max-width: 700px) {
-    	    .bg .crs {
-    	        font-size: 2rem;
-    	        position: absolute;
-    	        color: #fff;
-    	        top: 50%;
-    	        transform: translate(-50%, -50%);
-    	        left: 50%
-    	    }
-    	}
+    .bg .crs {
+        font-size: 2.5rem;
+        position: absolute;
+        color: #fff;
+        top: 50%;
+        transform: translate(0, -50%);
+        left: 10%;
+    }
 
-    	.items{
-    		width: 80%;
-    		padding: 20px;
-    		margin:20px auto;
-    		overflow: hidden;
+    @media (max-width: 700px) {
+        .bg .crs {
+            font-size: 2rem;
+            position: absolute;
+            color: #fff;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            left: 50%
+        }
+    }
+
+    .items {
+        width: 80%;
+        padding: 20px;
+        margin: 20px auto;
+        overflow: hidden;
+    }
+
+    .items .item {
+        width: 20%;
+        float: left;
+        height: 200px;
+        padding: 10px;
+        box-sizing: border-box;
+        transition: all 0.5s;
+    }
+
+    .items .item .box {
+        position: relative;
+        background: #fff;
+        width: 100%;
+        height: 100%;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+    }
+
+    .items .item .box a {
+        position: absolute;
+        top: 30%;
+        left: 50%;
+        transform: translate(-50%,0);
+        text-decoration: none;
+        text-align: center;
+        display: block;
+        color: #000;
+        font-size: 1.5rem;
+       	animation:ashow 1s forwards;
+    }
+    .items .item .box a:hover {
+		text-decoration: underline;
+    }
+    @keyframes ashow{
+    	0%{
+    		opacity:0;
+    		top: 50%;
     	}
-    	.items .item{
-    		width: 20%;
-    		float: left;
-    		height: 200px;
-    		padding:10px;
-    		box-sizing: border-box;
-    		transition: all 0.5s;
+    	100%{
+    		opacity:1;
+    		top: 30%;
     	}
-    	.items .item a{
-			background: #fff;
-			width: 100%;
-			height: 100%;
-			display: block;
-			text-decoration:none;
-			color: #000;
-			text-align: center;
-			line-height: 180px;
-			box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-			font-size: 1.5rem;
+    }
+
+    .items .item .box .mask {
+        position: absolute;
+        background: rgba(0, 0, 0, 0.1);
+        width: 100%;
+        bottom: 0;
+        padding: 5px;
+        box-sizing: border-box;
+    }
+
+    .items .item .box .mask .github {
+        float: right;
+        cursor: pointer;
+        padding: 5px 10px 5px 10px;
+        box-sizing: border-box;
+        border-radius: 3px;
+       	animation:gshow 1s forwards;
+    }
+    @keyframes gshow{
+    	0%{
+    		opacity:0;
+    		margin-right: -100px;
     	}
-    	@media (max-width: 1000px){
-	    	.items .item{
-	    		width: 25%;
-	    	}
-	    }
-    	@media (max-width: 800px){
-	    	.items .item{
-	    		width: 33.333%;
-	    	}
-	    }
-    	@media (max-width: 600px){
-	    	.items .item{
-	    		width: 50%;
-	    	}
-	    }
-    	@media (max-width: 400px){
-	    	.items .item{
-	    		width: 100%;
-	    	}
-	    }
+    	100%{
+    		opacity:1;
+    	}
+    }
+
+    .items .item .box .mask .github:hover {
+        background: #fff;
+    }
+
+    @media (max-width: 1000px) {
+        .items .item {
+            width: 25%;
+        }
+    }
+
+    @media (max-width: 800px) {
+        .items .item {
+            width: 33.333%;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .items .item {
+            width: 50%;
+        }
+    }
+
+    @media (max-width: 400px) {
+        .items .item {
+            width: 100%;
+        }
+    }
     </style>
 </head>
+
 <body>
-	<div class="bg">
-	    <div class="mask"></div>
-	    <div class="crs">
-	        Welcome to Hester's Labs!
-	    </div>
-	    <img src="./crs.jpg" alt="">
-	</div>
-	<div class="items">
-		<div class="item"><a href="3d-button.html">3d按钮</a></div>
-		<div class="item"><a href="drag.html">元素拖动</a></div>
-		<div class="item"><a href="divtop.html">顶部吸附</a></div>
-	</div>
+    <div class="bg">
+        <div class="mask"></div>
+        <div class="crs">
+            Welcome to Hester's Labs!
+        </div>
+        <img src="./crs.jpg" alt="">
+    </div>
+    <div class="items">
+        <div class="item">
+            <div class="box">
+                <a href="3d-button.html" target="_blank">3d按钮</a>
+                <div class="mask">
+                    <div class="github" onclick="window.open('https://github.com/garuhester/Labs/blob/master/3d-button.html')" target="_blank">Github</div>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="box">
+                <a href="drag.html" target="_blank">元素拖动</a>
+                <div class="mask">
+                    <div class="github" onclick="window.open('https://github.com/garuhester/Labs/blob/master/drag.html')">Github</div>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="box">
+                <a href="divtop.html" target="_blank">顶部吸附</a>
+                <div class="mask">
+                    <div class="github" onclick="window.open('https://github.com/garuhester/Labs/blob/master/divtop.html')">Github</div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>
