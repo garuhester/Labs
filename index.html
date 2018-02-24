@@ -3,11 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <title>Hester's Labs</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <style>
+    	body,html{
+    		margin:0;
+    		padding: 0;
+    	}
+    	.bg {
+    	    width: 100%;
+    	    position: relative;
+    	    font-size: 0;
+    	}
+
+    	.bg img {
+    	    width: 100%;
+    	    height: 400px;
+    	    object-fit: cover;
+    	}
+
+    	.bg .mask {
+    	    position: absolute;
+    	    top: 0;
+    	    left: 0;
+    	    width: 100%;
+    	    height: 100%;
+    	    background: rgba(0, 0, 0, 0.2);
+    	}
+
+    	.bg .crs {
+    	    font-size: 2.5rem;
+    	    position: absolute;
+    	    color: #fff;
+    	    top: 50%;
+    	    transform: translate(0, -50%);
+    	    left: 10%;
+    	}
+
+    	@media (max-width: 700px) {
+    	    .bg .crs {
+    	        font-size: 2rem;
+    	        position: absolute;
+    	        color: #fff;
+    	        top: 50%;
+    	        transform: translate(-50%, -50%);
+    	        left: 50%
+    	    }
+    	}
+    </style>
 </head>
 <body>
-    <h1>Welcome to Hester's Labs!</h1>
-    <a href="3d-button.html">3d按钮</a>
-    <a href="drag.html">元素拖动</a>
-    <a href="divtop.html">顶部吸附</a>
+	<div class="bg">
+	    <div class="mask"></div>
+	    <div class="crs">
+	        Welcome to Hester's Labs!
+	    </div>
+	    <img src="./crs.jpg" alt="">
+	</div>
+	<div class="items">
+		<div class="item"><a href="3d-button.html">3d按钮</a></div>
+		<div class="item"><a href="drag.html">元素拖动</a></div>
+		<div class="item"><a href="divtop.html">顶部吸附</a></div>
+	</div>
 </body>
 </html>
