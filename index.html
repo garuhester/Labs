@@ -82,9 +82,9 @@
 
     .items .item .box a {
         position: absolute;
-        top: 30%;
+        top: 50%;
         left: 50%;
-        transform: translate(-50%,0);
+        transform: translate(-50%,-50%);
         text-decoration: none;
         text-align: center;
         display: block;
@@ -98,17 +98,17 @@
     @keyframes ashow{
     	0%{
     		opacity:0;
-    		top: 50%;
+    		top: 70%;
     	}
     	100%{
     		opacity:1;
-    		top: 30%;
+    		top: 40%;
     	}
     }
 
     .items .item .box .mask {
         position: absolute;
-        background: rgba(0, 0, 0, 0.03);
+        /*background: rgba(0, 0, 0, 0.03);*/
         width: 100%;
         bottom: 0;
         padding: 5px;
@@ -122,6 +122,7 @@
         box-sizing: border-box;
         border-radius: 3px;
        	animation:gshow 1s forwards;
+        color: #999;
     }
     @keyframes gshow{
     	0%{
@@ -131,10 +132,6 @@
     	100%{
     		opacity:1;
     	}
-    }
-
-    .items .item .box .mask .github:hover {
-        background: #fff;
     }
 
     @media (max-width: 1000px) {
